@@ -1,0 +1,18 @@
+{% extends 'bs3_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>你好,{% if name %}{{ name }}{% else %}Stanger{% endif %}!</h1>
+        {% if not known %}
+        <p>第一次见面，多多指教！</p>
+        {% else %}
+        <p>很高兴再次见到您！</p>
+        {% endif %}
+    </div>
+    {{ wtf.quick_form(form) }}
+    <p>当前日期时间：{{ moment(current_time).format('LLL') }}.</p>
+    <p>那是 {{ moment(current_time).fromNow(refresh=True) }}</p>
+{% endblock %}
